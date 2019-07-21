@@ -20,9 +20,8 @@ adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 # ax_rtv = real time view graph
 # ax_pca = principal component analysis graph
 fig = plt.figure(figsize=(10,9))
-ax_rtv = fig.add_axes([0.1, 0.55, 0.65, 0.4])
+ax_rtv = fig.add_axes([0.1, 0.25, 0.65, 0.4])
 ax_pca = fig.add_axes([0.6, 0.1, 0.35, 0.35])
-ax_data_name = plt.axes([0.1, 0.40, 0.40, 0.075])
 
 def design_pca_graph(ax_pca):
     ax_pca.set_title('2 Component PCA', fontsize=18, fontweight="bold")
@@ -57,6 +56,6 @@ x = []
 sensors = {'MQ2':[], 'MQ3':[], 'MQ4':[], 'MQ6':[], 'MQ7':[], 'MQ8':[], 'MQ135':[]}
 colors = {'MQ2': 'b', 'MQ3': 'g', 'MQ4': 'r', 'MQ6': 'c', 'MQ7': 'm', 'MQ8':'y', 'MQ135': 'k'}
 
-design_pca_graph(ax_pca)
+# design_pca_graph(ax_pca)
 ani = animation.FuncAnimation(fig, animate_rtv, interval=1000, fargs=(x, sensors, colors, time.time()))
 plt.show()
