@@ -17,7 +17,7 @@ adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
 adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure(figsize=(10,9))
 # ax_pca = fig.add_axes([0.6, 0.1, 0.35, 0.35])
-ax_rtv = fig.add_axes([0.1, 0.1, 0.65, 0.4])
+ax_rtv = fig.add_axes([0.1, 0.15, 0.65, 0.7])
 
 def design_pca_graph(ax_pca):
     ax_pca.set_title('2 Component PCA', fontsize=18, fontweight="bold")
