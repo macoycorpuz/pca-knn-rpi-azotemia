@@ -2,10 +2,6 @@ import time
 import matplotlib.pyplot as plt
 import random
 
-#Initialize Data
-
-
-
 #Initialize figure
 fig = plt.figure()
 ax = fig.add_subplot(111)
