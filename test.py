@@ -13,15 +13,15 @@ import matplotlib.animation as animation
 adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
 adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure(figsize=(10,9))
+ax_rtv = fig.add_subplot(111)
+# ax_pca = fig.add_axes([0.6, 0.1, 0.35, 0.35])
 
 def design_pca_graph(ax_pca):
-    ax_pca = fig.add_axes([0.6, 0.1, 0.35, 0.35])
     ax_pca.set_title('2 Component PCA', fontsize=18, fontweight="bold")
     ax_pca.set_xlabel('pca1', fontsize=12, fontweight="bold")
     ax_pca.set_ylabel('pca2', fontsize=12, fontweight="bold")
 
 def design_rtv_graph(ax_rtv):
-    ax_rtv = fig.add_subplot(111)
     ax_rtv.set_title('Real Time View', fontsize=18, fontweight="bold", loc="left")
     ax_rtv.set_xlabel('Time', fontsize=12, fontweight="bold")
     ax_rtv.set_ylabel('MQ sensor values', fontsize=12, fontweight="bold")
