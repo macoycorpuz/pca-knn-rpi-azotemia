@@ -6,8 +6,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.widgets import Button
-import pca
+# import pca
 
+adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
+adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure(figsize=(10,9))
 target = 'air'
 
@@ -18,8 +20,8 @@ def design_rtv_graph(ax_rtv):
     ax_rtv.set_xlabel('Time', fontsize=12, fontweight="bold")
     ax_rtv.set_ylabel('MQ sensor values', fontsize=12, fontweight="bold")
 
-def show_pca(e):
-    pca.pca()
+# def show_pca(e):
+#     pca.pca()
 
 def set_air(e):
     target = 'air'
@@ -75,7 +77,7 @@ btnPCA = Button(ax_pca_btn, 'Show PCA')
 btnAir.on_clicked(set_air)
 btnHealthy.on_clicked(set_healthy)
 btnAzotemic.on_clicked(set_azotemic)
-btnPCA.on_clicked(show_pca)
+# btnPCA.on_clicked(show_pca)
 
 ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
 plt.show()
