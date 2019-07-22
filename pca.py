@@ -31,3 +31,6 @@ def pca():
     ax.legend(targets)
     ax.grid()
     plt.show()
+
+if __name__ == "__main__":
+    pca()    
