@@ -1,4 +1,3 @@
-import Adafruit_ADS1x15
 import time
 import csv
 import numpy as np
