@@ -24,16 +24,16 @@ def show_pca(e):
     pca.pca()
 
 def set_air(e):
+    global target
     target = 'air'
-    print(target)
 
 def set_healthy(e):
+    global target
     target = 'healthy'
-    print(target)
 
 def set_azotemic(e):
+    global target
     target = 'azotemic'
-    print(target)
 
 def save_data(values): 
     with open('history.csv', 'a') as fd:
@@ -45,19 +45,19 @@ def save_data(values):
         writer.writerow(values + [target])
 
 def animate_rtv(i, x, sensors, colors, start_time):
-    # data = []
+    data = []
 
-    # ax_rtv.clear()
-    # x.append(round(time.time()-start_time, 5))
-    # for i, (sensor, values) in enumerate(sensors.items()):
-    #     adc = adc1.read_adc(i) if i < 4 else adc2.read_adc(i-4)
-    #     volts = round(adc * (4.096/32767), 5)
-    #     values.append(volts)
-    #     data.append(volts)
+    ax_rtv.clear()
+    x.append(round(time.time()-start_time, 5))
+    for i, (sensor, values) in enumerate(sensors.items()):
+        adc = adc1.read_adc(i) if i < 4 else adc2.read_adc(i-4)
+        volts = round(adc * (4.096/32767), 5)
+        values.append(volts)
+        data.append(volts)
         
-    #     lbl = "{}: {}".format(sensor, str(values[-1]))
-    #     ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-    #     ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
+        lbl = "{}: {}".format(sensor, str(values[-1]))
+        ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
+        ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
     
     # save_data(data)
     print(target)
@@ -76,11 +76,10 @@ btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'Show PCA')
-
-ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
-
 btnAir.on_clicked(set_air)
 btnHealthy.on_clicked(set_healthy)
 btnAzotemic.on_clicked(set_azotemic)
 btnPCA.on_clicked(show_pca)
+
+ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
 plt.show()
