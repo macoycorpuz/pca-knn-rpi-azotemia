@@ -76,10 +76,11 @@ btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'Show PCA')
+
+ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
+
 btnAir.on_clicked(set_air)
 btnHealthy.on_clicked(set_healthy)
 btnAzotemic.on_clicked(set_azotemic)
 btnPCA.on_clicked(show_pca)
-
-ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
 plt.show()
