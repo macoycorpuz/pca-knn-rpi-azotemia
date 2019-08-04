@@ -45,19 +45,19 @@ def save_data(values):
         writer.writerow(values + [target])
 
 def animate_rtv(i, x, sensors, colors, start_time):
-    data = []
+    # data = []
 
-    ax_rtv.clear()
-    x.append(round(time.time()-start_time, 5))
-    for i, (sensor, values) in enumerate(sensors.items()):
-        adc = adc1.read_adc(i) if i < 4 else adc2.read_adc(i-4)
-        volts = round(adc * (4.096/32767), 5)
-        values.append(volts)
-        data.append(volts)
+    # ax_rtv.clear()
+    # x.append(round(time.time()-start_time, 5))
+    # for i, (sensor, values) in enumerate(sensors.items()):
+    #     adc = adc1.read_adc(i) if i < 4 else adc2.read_adc(i-4)
+    #     volts = round(adc * (4.096/32767), 5)
+    #     values.append(volts)
+    #     data.append(volts)
         
-        lbl = "{}: {}".format(sensor, str(values[-1]))
-        ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-        ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
+    #     lbl = "{}: {}".format(sensor, str(values[-1]))
+    #     ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
+    #     ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
     
     # save_data(data)
     print(target)
