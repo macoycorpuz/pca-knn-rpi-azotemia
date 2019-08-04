@@ -59,8 +59,9 @@ def animate_rtv(i, x, sensors, colors, start_time):
         ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
         ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
     
-    save_data(data)
-    design_rtv_graph(ax_rtv)    
+    # save_data(data)
+    print(target)
+    design_rtv_graph(ax_rtv)
 
 x = []
 sensors = {'MQ2':[], 'MQ3':[], 'MQ4':[], 'MQ6':[], 'MQ7':[], 'MQ8':[], 'MQ135':[]}
@@ -70,6 +71,7 @@ ax_air = plt.axes([0.10, 0.03, 0.1, 0.05])
 ax_healthy = plt.axes([0.20, 0.03, 0.1, 0.05])
 ax_azotemic = plt.axes([0.30, 0.03, 0.1, 0.05])
 ax_pca_btn = plt.axes([0.41, 0.03, 0.1, 0.05])
+
 btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
