@@ -55,7 +55,7 @@ def save_data(data):
         writer = csv.writer(fd)
         writer.writerow(data)
 
-    if target <> 'air':
+    if target != 'air':
         with open('dataset.csv', 'a') as fd2:
             writer = csv.writer(fd2)
             writer.writerow(data + [target])
