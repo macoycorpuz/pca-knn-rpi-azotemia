@@ -10,7 +10,7 @@ import pca
 
 adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
 adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
-fig = plt.figure(figsize=(10,9))
+fig = plt.figure(figsize=(11,9))
 # fig.canvas.manager.full_screen_toggle()
 
 ax_rtv = fig.add_axes([0.1, 0.18, 0.7, 0.75])
