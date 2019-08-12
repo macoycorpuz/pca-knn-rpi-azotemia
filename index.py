@@ -13,11 +13,11 @@ adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure(figsize=(10,9))
 # fig.canvas.manager.full_screen_toggle()
 
-ax_rtv = fig.add_axes([0.1, 0.15, 0.65, 0.7])
-ax_air = plt.axes([0.10, 0.03, 0.1, 0.05])
-ax_healthy = plt.axes([0.20, 0.03, 0.1, 0.05])
-ax_azotemic = plt.axes([0.30, 0.03, 0.1, 0.05])
-ax_pca_btn = plt.axes([0.41, 0.03, 0.1, 0.05])
+ax_rtv = fig.add_axes([0.1, 0.18, 0.7, 0.75])
+ax_air = plt.axes([0.10, 0.04, 0.1, 0.05])
+ax_healthy = plt.axes([0.20, 0.04, 0.1, 0.05])
+ax_azotemic = plt.axes([0.30, 0.04, 0.1, 0.05])
+ax_pca_btn = plt.axes([0.41, 0.04, 0.1, 0.05])
 
 btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
@@ -50,13 +50,15 @@ def onClickAzotemic(e):
     target = 'azotemic'
 
 def save_data(data): 
+    global target
     with open('history.csv', 'a') as fd:
         writer = csv.writer(fd)
         writer.writerow(data)
 
-    with open('dataset.csv', 'a') as fd2:
-        writer = csv.writer(fd2)
-        writer.writerow(data + [target])
+    if target <> 'air':
+        with open('dataset.csv', 'a') as fd2:
+            writer = csv.writer(fd2)
+            writer.writerow(data + [target])
 
 def animate_rtv(i, x, sensors, colors, start_time):
     data = []
