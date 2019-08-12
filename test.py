@@ -9,7 +9,7 @@ import pca
 
 fig = plt.figure(figsize=(11,9))
 
-ax_rtv = fig.add_axes([0.1, 0.18, 0.7, 0.75])
+ax_rtv = fig.add_axes([0.1, 0.18, 0.65, 0.7])
 ax_air = plt.axes([0.10, 0.04, 0.1, 0.05])
 ax_healthy = plt.axes([0.20, 0.04, 0.1, 0.05])
 ax_azotemic = plt.axes([0.30, 0.04, 0.1, 0.05])

@@ -13,7 +13,7 @@ adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure(figsize=(11,9))
 # fig.canvas.manager.full_screen_toggle()
 
-ax_rtv = fig.add_axes([0.1, 0.18, 0.7, 0.75])
+ax_rtv = fig.add_axes([0.1, 0.18, 0.65, 0.7])
 ax_air = plt.axes([0.10, 0.04, 0.1, 0.05])
 ax_healthy = plt.axes([0.20, 0.04, 0.1, 0.05])
 ax_azotemic = plt.axes([0.30, 0.04, 0.1, 0.05])
@@ -31,8 +31,8 @@ colors = {'MQ2': 'b', 'MQ3': 'g', 'MQ4': 'r', 'MQ6': 'c', 'MQ7': 'm', 'MQ8':'y',
 
 def design_rtv_graph(ax_rtv):
     ax_rtv.set_title('Real Time View', fontsize=18, fontweight="bold", loc="left")
-    ax_rtv.set_xlabel('Time', fontsize=12, fontweight="bold")
-    ax_rtv.set_ylabel('MQ sensor values', fontsize=12, fontweight="bold")
+    ax_rtv.set_xlabel('Time (s)', fontsize=12, fontweight="bold")
+    ax_rtv.set_ylabel('MQ sensor values (V)', fontsize=12, fontweight="bold")
 
 def onClickPCA(e):
     pca.pca()
