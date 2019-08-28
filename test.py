@@ -8,21 +8,30 @@ from matplotlib.widgets import Button
 import pca
 
 fig = plt.figure()
-fig = plt.get_current_fig_manager()
-fig.frame.Maximize(True)
-
-ax_rtv = fig.add_axes([0.1, 0.25, 0.62, 0.68])
-ax_air = plt.axes([0.10, 0.04, 0.1, 0.05])
-ax_healthy = plt.axes([0.20, 0.04, 0.1, 0.05])
-ax_azotemic = plt.axes([0.30, 0.04, 0.1, 0.05])
-ax_pca_btn = plt.axes([0.41, 0.04, 0.1, 0.05])
-ax_close = plt.axes([0.51, 0.04, 0.1, 0.05])
+ax_rtv = fig.add_axes([0.11, 0.25, 0.61, 0.68])
+ax_air = plt.axes([0.03, 0.04, 0.13, 0.05])
+ax_healthy = plt.axes([0.16, 0.04, 0.13, 0.05])
+ax_azotemic = plt.axes([0.29, 0.04, 0.13, 0.05])
+ax_pca_btn = plt.axes([0.44, 0.04, 0.13, 0.05])
+ax_knn_btn = plt.axes([0.57, 0.04, 0.13, 0.05])
+ax_svm_btn = plt.axes([0.70, 0.04, 0.13, 0.05])
+ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
 
 btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
-btnPCA = Button(ax_pca_btn, 'Show PCA')
+btnPCA = Button(ax_pca_btn, 'PCA')
+btnKNN = Button(ax_knn_btn, 'KNN')
+btnSVM = Button(ax_svm_btn, 'SVM')
 btnExit = Button(ax_close, 'Exit')
+
+btnAir.label.set_fontsize(9)
+btnHealthy.label.set_fontsize(9)
+btnAzotemic.label.set_fontsize(9)
+btnPCA.label.set_fontsize(9)
+btnKNN.label.set_fontsize(9)
+btnSVM.label.set_fontsize(9)
+btnExit.label.set_fontsize(9)
 
 x = []
 target = 'air'
@@ -64,7 +73,7 @@ def animate_rtv(i, x, sensors, colors, start_time):
         
         lbl = "{}: {}".format(sensor, str(values[-1]))
         ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-        ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
+        ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 7})
     
     design_rtv_graph(ax_rtv)
 
