@@ -27,7 +27,7 @@ btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'PCA')
 btnKNN = Button(ax_knn_btn, 'KNN')
-btnSVM = Button(ax_knn_btn, 'SVM')
+btnSVM = Button(ax_svm_btn, 'SVM')
 btnExit = Button(ax_close, 'Exit')
 
 btnAir.label.set_fontsize(9)
