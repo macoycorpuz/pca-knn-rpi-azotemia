@@ -13,7 +13,7 @@ adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure()
 fig.canvas.manager.full_screen_toggle()
 
-ax_rtv = fig.add_axes([0.1, 0.25, 0.62, 0.68])
+ax_rtv = fig.add_axes([0.11, 0.25, 0.62, 0.7])
 ax_air = plt.axes([0.05, 0.04, 0.15, 0.05])
 ax_healthy = plt.axes([0.20, 0.04, 0.15, 0.05])
 ax_azotemic = plt.axes([0.35, 0.04, 0.15, 0.05])
@@ -78,7 +78,7 @@ def animate_rtv(i, x, sensors, colors, start_time):
         
         lbl = "{}: {}".format(sensor, str(values[-1]))
         ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-        ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 6})
+        ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 8})
     
     save_data(data)
     design_rtv_graph(ax_rtv)
