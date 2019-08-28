@@ -13,7 +13,7 @@ adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure()
 fig.canvas.manager.full_screen_toggle()
 
-ax_rtv = fig.add_axes([0.11, 0.25, 0.62, 0.7])
+ax_rtv = fig.add_axes([0.11, 0.25, 0.63, 0.68])
 ax_air = plt.axes([0.05, 0.04, 0.15, 0.05])
 ax_healthy = plt.axes([0.20, 0.04, 0.15, 0.05])
 ax_azotemic = plt.axes([0.35, 0.04, 0.15, 0.05])
@@ -25,6 +25,12 @@ btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'Show PCA')
 btnExit = Button(ax_close, 'Exit')
+
+btnAir.label.set_fontsize(9)
+btnHealthy.label.set_fontsize(9)
+btnAzotemic.label.set_fontsize(9)
+btnPCA.label.set_fontsize(9)
+btnExit.label.set_fontsize(9)
 
 x = []
 target = 'air'
@@ -78,7 +84,7 @@ def animate_rtv(i, x, sensors, colors, start_time):
         
         lbl = "{}: {}".format(sensor, str(values[-1]))
         ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-        ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 8})
+        ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 7})
     
     save_data(data)
     design_rtv_graph(ax_rtv)
