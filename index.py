@@ -13,7 +13,7 @@ adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
 fig = plt.figure()
 fig.canvas.manager.full_screen_toggle()
 
-ax_rtv = fig.add_axes([0.11, 0.25, 0.63, 0.68])
+ax_rtv = fig.add_axes([0.11, 0.25, 0.61, 0.68])
 ax_air = plt.axes([0.03, 0.04, 0.13, 0.05])
 ax_healthy = plt.axes([0.16, 0.04, 0.13, 0.05])
 ax_azotemic = plt.axes([0.29, 0.04, 0.13, 0.05])
