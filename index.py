@@ -32,9 +32,9 @@ sensors = {'MQ2':[], 'MQ3':[], 'MQ4':[], 'MQ6':[], 'MQ7':[], 'MQ8':[], 'MQ135':[
 colors = {'MQ2': 'b', 'MQ3': 'g', 'MQ4': 'r', 'MQ6': 'c', 'MQ7': 'm', 'MQ8':'y', 'MQ135': 'k'}
 
 def design_rtv_graph(ax_rtv):
-    ax_rtv.set_title('Real Time View', fontsize=18, fontweight="bold", loc="left")
-    ax_rtv.set_xlabel('Time (s)', fontsize=12, fontweight="bold")
-    ax_rtv.set_ylabel('MQ sensor values (V)', fontsize=12, fontweight="bold")
+    ax_rtv.set_title('Real Time View', fontsize=10, fontweight="bold", loc="left")
+    ax_rtv.set_xlabel('Time (s)', fontsize=8, fontweight="bold")
+    ax_rtv.set_ylabel('MQ sensor values (V)', fontsize=8, fontweight="bold")
 
 def onClickNone(e):
     global target
