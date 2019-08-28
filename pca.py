@@ -16,7 +16,7 @@ def pca():
     components = pca.fit_transform(sensor_values)
     principalDf = pd.DataFrame(data=components, columns=['pc1', 'pc2'])
     finalDf = pd.concat([principalDf, df[['target']]], axis = 1)
-    fig = plt.figure(figsize = (8,8))
+    fig = plt.figure()
     ax = fig.add_subplot(1,1,1) 
     ax.set_xlabel('PC 1', fontsize = 15)
     ax.set_ylabel('PC 2', fontsize = 15)
