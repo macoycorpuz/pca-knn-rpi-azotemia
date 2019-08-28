@@ -14,11 +14,11 @@ fig = plt.figure()
 fig.canvas.manager.full_screen_toggle()
 
 ax_rtv = fig.add_axes([0.1, 0.25, 0.62, 0.68])
-ax_air = plt.axes([0.10, 0.04, 0.1, 0.05])
-ax_healthy = plt.axes([0.20, 0.04, 0.1, 0.05])
-ax_azotemic = plt.axes([0.30, 0.04, 0.1, 0.05])
-ax_pca_btn = plt.axes([0.41, 0.04, 0.1, 0.05])
-ax_close = plt.axes([0.51, 0.04, 0.1, 0.05])
+ax_air = plt.axes([0.05, 0.04, 0.15, 0.05])
+ax_healthy = plt.axes([0.20, 0.04, 0.15, 0.05])
+ax_azotemic = plt.axes([0.35, 0.04, 0.15, 0.05])
+ax_pca_btn = plt.axes([0.55, 0.04, 0.15, 0.05])
+ax_close = plt.axes([0.70, 0.04, 0.15, 0.05])
 
 btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
@@ -78,7 +78,7 @@ def animate_rtv(i, x, sensors, colors, start_time):
         
         lbl = "{}: {}".format(sensor, str(values[-1]))
         ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-        ax_rtv.legend(bbox_to_anchor=(1.05, 1.02), loc='upper left', borderaxespad=0.5)
+        ax_rtv.legend(bbox_to_anchor=(0.8, 1.02), loc='upper left', borderaxespad=0.5)
     
     save_data(data)
     design_rtv_graph(ax_rtv)
