@@ -10,19 +10,21 @@ import pca
 
 adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
 adc2 = Adafruit_ADS1x15.ADS1115(address=0x48)
-fig = plt.figure(figsize=(11,9))
-# fig.canvas.manager.full_screen_toggle()
+fig = plt.figure()
+fig.canvas.manager.full_screen_toggle()
 
-ax_rtv = fig.add_axes([0.1, 0.18, 0.65, 0.7])
+ax_rtv = fig.add_axes([0.1, 0.25, 0.62, 0.68])
 ax_air = plt.axes([0.10, 0.04, 0.1, 0.05])
 ax_healthy = plt.axes([0.20, 0.04, 0.1, 0.05])
 ax_azotemic = plt.axes([0.30, 0.04, 0.1, 0.05])
 ax_pca_btn = plt.axes([0.41, 0.04, 0.1, 0.05])
+ax_close = plt.axes([0.51, 0.04, 0.1, 0.05])
 
 btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'Show PCA')
+btnExit = Button(ax_close, 'Exit')
 
 x = []
 target = 'air'
@@ -33,9 +35,6 @@ def design_rtv_graph(ax_rtv):
     ax_rtv.set_title('Real Time View', fontsize=18, fontweight="bold", loc="left")
     ax_rtv.set_xlabel('Time (s)', fontsize=12, fontweight="bold")
     ax_rtv.set_ylabel('MQ sensor values (V)', fontsize=12, fontweight="bold")
-
-def onClickPCA(e):
-    pca.pca()
 
 def onClickNone(e):
     global target
@@ -48,6 +47,12 @@ def onClickHealthy(e):
 def onClickAzotemic(e):
     global target
     target = 'azotemic'
+
+def onClickPCA(e):
+    pca.pca()
+
+def onClickExit(e):
+    plt.close()
 
 def save_data(data): 
     global target
@@ -82,5 +87,6 @@ btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
 btnAzotemic.on_clicked(onClickAzotemic)
 btnPCA.on_clicked(onClickPCA)
+btnExit.on_clicked(onClickExit)
 ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
 plt.show()
