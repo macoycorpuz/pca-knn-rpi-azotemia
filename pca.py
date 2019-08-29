@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 def pca():
     sensors = ['MQ2','MQ3','MQ4','MQ6','MQ7','MQ8','MQ135']
 
-    df = pd.read_csv('dataset.csv', error_bad_lines=False)
+    df = pd.read_csv('_dataset.csv', error_bad_lines=False)
     sensor_values = df.loc[:, sensors].values
     target_values = df.loc[:,['target']].values
 
