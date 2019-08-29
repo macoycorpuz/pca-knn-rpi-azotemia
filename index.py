@@ -71,15 +71,19 @@ def save_data(data):
         writer = csv.writer(fd)
         writer.writerow(data)
 
+    if target == 'test':
+        with open('_test.csv', 'w+') as fd:
+            writer = csv.writer(fd)
+            writer.writerow(list(sensors.keys()))
+            writer.writerow(data)
+
     if target != 'air':
-        with open('_dataset.csv', 'a') as fd2:
-            writer = csv.writer(fd2)
+        with open('_dataset.csv', 'a') as fd:
+            writer = csv.writer(fd)
             writer.writerow(data + [target])
 
-def animate_rtv(i, x, sensors, colors, start_time):
+def graph_real_time(x, sensors, colors, start_time):
     data = []
-
-    ax_graph.clear()
     x.append(round(time.time()-start_time, 5))
     for i, (sensor, values) in enumerate(sensors.items()):
         adc = adc1.read_adc(i) if i < 4 else adc2.read_adc(i-4)
@@ -90,9 +94,13 @@ def animate_rtv(i, x, sensors, colors, start_time):
         lbl = "{}: {}".format(sensor, str(values[-1]))
         ax_graph.plot(x, values, color=colors[sensor], label=lbl)  
         ax_graph.legend(loc='upper left', borderaxespad=0.5, prop={'size': 7})
-    
-    save_data(data)
     design_rtv_graph(ax_graph)
+
+def animate_rtv(i, x, sensors, colors, start_time):
+
+    ax_graph.clear()
+    graph_real_time(x, sensors, colors, start_time)
+    save_data(data)
 
 
 
