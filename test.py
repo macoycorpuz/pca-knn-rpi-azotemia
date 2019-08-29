@@ -76,6 +76,7 @@ def animate_rtv(i, x, sensors, colors, start_time):
         ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 7})
     
     design_rtv_graph(ax_rtv)
+    plt.text(-2.5, 18, 'Prediction: 5%', fontsize=9, fontweight='bold')
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
