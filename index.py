@@ -95,12 +95,11 @@ def graph_real_time(x, sensors, colors, start_time):
         ax_graph.plot(x, values, color=colors[sensor], label=lbl)  
         ax_graph.legend(loc='upper left', borderaxespad=0.5, prop={'size': 7})
     design_rtv_graph(ax_graph)
+    save_data(data)
 
 def animate_rtv(i, x, sensors, colors, start_time):
-
     ax_graph.clear()
     graph_real_time(x, sensors, colors, start_time)
-    save_data(data)
 
 
 
