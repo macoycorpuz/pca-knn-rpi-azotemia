@@ -1,8 +1,12 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.widgets import Button
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+
+def onClickExit(e):
+    plt.close()
 
 def pca():
     sensors = ['MQ2','MQ3','MQ4','MQ6','MQ7','MQ8','MQ135']
@@ -15,8 +19,12 @@ def pca():
     components = pca.fit_transform(sensor_values)
     principalDf = pd.DataFrame(data=components, columns=['pc1', 'pc2'])
     finalDf = pd.concat([principalDf, df[['target']]], axis = 1)
+
+
     fig = plt.figure()
-    ax = fig.add_subplot(1,1,1) 
+    fig.canvas.manager.full_screen_toggle()
+    ax = fig.add_axes([0.13, 0.25, 0.80, 0.68])
+    ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
     ax.set_xlabel('PC 1', fontsize = 10)
     ax.set_ylabel('PC 2', fontsize = 10)
     targets = ['healthy', 'azotemic']
@@ -26,6 +34,10 @@ def pca():
         ax.scatter(finalDf.loc[indicesToKeep, 'pc1'], finalDf.loc[indicesToKeep, 'pc2'], c = color, s = 50)
     ax.legend(targets)
     ax.grid()
+
+    btnExit = Button(ax_close, 'Exit')
+    btnExit.label.set_fontsize(9)
+    btnExit.on_clicked(onClickExit)
     plt.show()
 
 if __name__ == "__main__":

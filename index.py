@@ -99,8 +99,7 @@ def graph_real_time(x, sensors, colors, start_time):
 
 def animate_rtv(i, x, sensors, colors, start_time):
     ax_graph.clear()
-    if target == 'air':
-        graph_real_time(x, sensors, colors, start_time)
+    graph_real_time(x, sensors, colors, start_time)
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
