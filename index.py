@@ -60,6 +60,7 @@ def onClickPCA(e):
     pca.pca()
 
 def onClickKNN(e):
+    global prediction
     temp = int(prediction)
     prediction = str(temp+1)
     
