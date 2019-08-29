@@ -101,7 +101,7 @@ def graph_real_time(x, sensors, colors, start_time):
 def animate_rtv(i, x, sensors, colors, start_time):
     ax_graph.clear()
     graph_real_time(x, sensors, colors, start_time)
-    plt.text(-2.5, 18, 'Prediction: 5%', fontsize=9, fontweight='bold')
+    plt.text(-1, 18, '5%', fontsize=9, fontweight='bold')
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
