@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib.widgets import Button
-import pca
+import pca, knn
 
 ## Draw Figures
 fig = plt.figure()
@@ -38,6 +38,7 @@ btnExit.label.set_fontsize(9)
 #Initialize ADC
 x = []
 target = 'air'
+prediction = ''
 sensors = {'MQ2':[], 'MQ3':[], 'MQ4':[], 'MQ6':[], 'MQ7':[], 'MQ8':[], 'MQ135':[]}
 colors = {'MQ2': 'b', 'MQ3': 'g', 'MQ4': 'r', 'MQ6': 'c', 'MQ7': 'm', 'MQ8':'y', 'MQ135': 'k'}
 adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
@@ -58,6 +59,9 @@ def onClickAzotemic(e):
 def onClickPCA(e):
     pca.pca()
 
+def onClickKNN(e):
+    pca.pca()
+    
 def onClickExit(e):
     plt.close()
 
@@ -101,12 +105,13 @@ def graph_real_time(x, sensors, colors, start_time):
 def animate_rtv(i, x, sensors, colors, start_time):
     ax_graph.clear()
     graph_real_time(x, sensors, colors, start_time)
-    plt.text(-1, 18, '5%', fontsize=9, fontweight='bold')
+    plt.text(-1, 18, prediction, fontsize=9, fontweight='bold')
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
 btnAzotemic.on_clicked(onClickAzotemic)
 btnPCA.on_clicked(onClickPCA)
+btnKNN.on_clicked(onClickKNN)
 btnExit.on_clicked(onClickExit)
 ani = animation.FuncAnimation(fig, animate_rtv,frames = 10, interval=1000, fargs=(x, sensors, colors, time.time()))
 plt.show()
