@@ -90,7 +90,7 @@ def animate_rtv(i, x, sensors, colors, start_time):
         
         lbl = "{}: {}".format(sensor, str(values[-1]))
         ax_rtv.plot(x, values, color=colors[sensor], label=lbl)  
-        ax_rtv.legend(bbox_to_anchor=(1.02, 1.02), loc='upper left', borderaxespad=0.5, prop={'size': 7})
+        ax_rtv.legend(loc='upper left', borderaxespad=0.5, prop={'size': 7})
     
     save_data(data)
     design_rtv_graph(ax_rtv)
