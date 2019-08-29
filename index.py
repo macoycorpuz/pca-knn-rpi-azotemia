@@ -19,6 +19,7 @@ ax_pca_btn = plt.axes([0.44, 0.04, 0.13, 0.05])
 ax_knn_btn = plt.axes([0.57, 0.04, 0.13, 0.05])
 ax_svm_btn = plt.axes([0.70, 0.04, 0.13, 0.05])
 ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
+ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
 btnAir = Button(ax_air, 'None')
 btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
@@ -100,6 +101,7 @@ def graph_real_time(x, sensors, colors, start_time):
 def animate_rtv(i, x, sensors, colors, start_time):
     ax_graph.clear()
     graph_real_time(x, sensors, colors, start_time)
+    text(0.5, 0.5, 'Prediction: 5%', fontsize=10, fontweight='bold')
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
