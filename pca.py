@@ -9,7 +9,6 @@ def pca():
 
     df = pd.read_csv('_dataset.csv', error_bad_lines=False)
     sensor_values = df.loc[:, sensors].values
-    target_values = df.loc[:,['target']].values
 
     sensor_values = StandardScaler().fit_transform(sensor_values)
     pca = PCA(n_components=2)
@@ -18,11 +17,8 @@ def pca():
     finalDf = pd.concat([principalDf, df[['target']]], axis = 1)
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1) 
-    ax.set_xlabel('PC 1', fontsize = 15)
-    ax.set_ylabel('PC 2', fontsize = 15)
-    ax.set_title('2 Component PCA', fontsize = 20)
-
-
+    ax.set_xlabel('PC 1', fontsize = 10)
+    ax.set_ylabel('PC 2', fontsize = 10)
     targets = ['healthy', 'azotemic']
     colors = ['g', 'r']
     for target, color in zip(targets,colors):
