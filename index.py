@@ -38,7 +38,7 @@ btnExit.label.set_fontsize(9)
 #Initialize ADC
 x = []
 target = 'air'
-prediction = ''
+prediction = '0'
 sensors = {'MQ2':[], 'MQ3':[], 'MQ4':[], 'MQ6':[], 'MQ7':[], 'MQ8':[], 'MQ135':[]}
 colors = {'MQ2': 'b', 'MQ3': 'g', 'MQ4': 'r', 'MQ6': 'c', 'MQ7': 'm', 'MQ8':'y', 'MQ135': 'k'}
 adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
@@ -60,7 +60,8 @@ def onClickPCA(e):
     pca.pca()
 
 def onClickKNN(e):
-    pca.pca()
+    temp = int(prediction)
+    prediction = str(temp+1)
     
 def onClickExit(e):
     plt.close()
@@ -105,7 +106,7 @@ def graph_real_time(x, sensors, colors, start_time):
 def animate_rtv(i, x, sensors, colors, start_time):
     ax_graph.clear()
     graph_real_time(x, sensors, colors, start_time)
-    plt.text(-1, 18, prediction, fontsize=9, fontweight='bold')
+    plt.text(-1, 18, prediction + '%', fontsize=9, fontweight='bold')
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
