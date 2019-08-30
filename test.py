@@ -14,7 +14,6 @@ ax_healthy = plt.axes([0.16, 0.04, 0.13, 0.05])
 ax_azotemic = plt.axes([0.29, 0.04, 0.13, 0.05])
 ax_pca_btn = plt.axes([0.44, 0.04, 0.13, 0.05])
 ax_knn_btn = plt.axes([0.57, 0.04, 0.13, 0.05])
-ax_svm_btn = plt.axes([0.70, 0.04, 0.13, 0.05])
 ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
 time_text = plt.text(.5, .5, '', fontsize=15)
 
@@ -23,7 +22,6 @@ btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'PCA')
 btnKNN = Button(ax_knn_btn, 'KNN')
-btnSVM = Button(ax_svm_btn, 'SVM')
 btnExit = Button(ax_close, 'Exit')
 
 btnAir.label.set_fontsize(9)
@@ -31,7 +29,6 @@ btnHealthy.label.set_fontsize(9)
 btnAzotemic.label.set_fontsize(9)
 btnPCA.label.set_fontsize(9)
 btnKNN.label.set_fontsize(9)
-btnSVM.label.set_fontsize(9)
 btnExit.label.set_fontsize(9)
 
 x = []

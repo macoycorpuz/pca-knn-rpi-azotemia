@@ -26,3 +26,7 @@ def knn():
     classifier.fit(X_train, y_train)
     y_pred = classifier.predict(X_test)
     return Counter(y_pred).most_common()[0][0]
+
+
+if __name__ == "__main__":
+    print(knn())    

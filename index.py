@@ -17,8 +17,6 @@ ax_healthy = plt.axes([0.16, 0.04, 0.13, 0.05])
 ax_azotemic = plt.axes([0.29, 0.04, 0.13, 0.05])
 ax_pca_btn = plt.axes([0.44, 0.04, 0.13, 0.05])
 ax_knn_btn = plt.axes([0.57, 0.04, 0.13, 0.05])
-ax_svm_btn = plt.axes([0.70, 0.04, 0.13, 0.05])
-ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
 ax_close = plt.axes([0.85, 0.04, 0.13, 0.05])
 ax_text = plt.text(-1, 18, '', fontsize=9, fontweight='bold')
 btnAir = Button(ax_air, 'None')
@@ -26,20 +24,19 @@ btnHealthy = Button(ax_healthy, 'Healthy')
 btnAzotemic = Button(ax_azotemic, 'Azotemic')
 btnPCA = Button(ax_pca_btn, 'PCA')
 btnKNN = Button(ax_knn_btn, 'KNN')
-btnSVM = Button(ax_svm_btn, 'SVM')
 btnExit = Button(ax_close, 'Exit')
 btnAir.label.set_fontsize(9)
 btnHealthy.label.set_fontsize(9)
 btnAzotemic.label.set_fontsize(9)
 btnPCA.label.set_fontsize(9)
 btnKNN.label.set_fontsize(9)
-btnSVM.label.set_fontsize(9)
 btnExit.label.set_fontsize(9)
 
-#Initialize ADC
+## Initialize ADC
 x = []
 target = 'air'
-prediction = '0'
+predict = False
+ctr = 0
 sensors = {'MQ2':[], 'MQ3':[], 'MQ4':[], 'MQ6':[], 'MQ7':[], 'MQ8':[], 'MQ135':[]}
 colors = {'MQ2': 'b', 'MQ3': 'g', 'MQ4': 'r', 'MQ6': 'c', 'MQ7': 'm', 'MQ8':'y', 'MQ135': 'k'}
 adc1 = Adafruit_ADS1x15.ADS1115(address=0x49)
@@ -61,9 +58,10 @@ def onClickPCA(e):
     pca.pca()
 
 def onClickKNN(e):
-    global prediction
-    temp = int(prediction)
-    prediction = str(temp+1)
+    global predict, ctr
+    clear_test_data()
+    ctr = 0
+    predict = True
     
 def onClickExit(e):
     plt.close()
@@ -79,10 +77,9 @@ def save_data(data):
         writer = csv.writer(fd)
         writer.writerow(data)
 
-    if target == 'test':
-        with open('_test.csv', 'w+') as fd:
+    if predict:
+        with open('_test.csv', 'a') as fd:
             writer = csv.writer(fd)
-            writer.writerow(list(sensors.keys()))
             writer.writerow(data)
 
     if target != 'air':
@@ -90,7 +87,14 @@ def save_data(data):
             writer = csv.writer(fd)
             writer.writerow(data + [target])
 
-def graph_real_time(x, sensors, colors, start_time):
+def clear_test_data():
+    with open('_test.csv', 'w+') as fd:
+        writer = csv.writer(fd)
+        writer.writerow(list(sensors.keys()))
+
+def animate_rtv(i, x, sensors, colors, start_time):
+    ax_graph.clear()
+
     data = []
     x.append(round(time.time()-start_time, 5))
     for i, (sensor, values) in enumerate(sensors.items()):
@@ -105,10 +109,15 @@ def graph_real_time(x, sensors, colors, start_time):
     design_rtv_graph(ax_graph)
     save_data(data)
 
-def animate_rtv(i, x, sensors, colors, start_time):
-    ax_graph.clear()
-    graph_real_time(x, sensors, colors, start_time)
-    ax_text.set_text(prediction + '%')
+    global predict, ctr
+    if predict:
+        ctr += 1
+        ax_text.set_text(str(ctr) + '%')
+        if ctr >= 100:
+            ax_text.set_text(knn.knn())
+    else:
+        ax_text.set_text('')
+
 
 btnAir.on_clicked(onClickNone)
 btnHealthy.on_clicked(onClickHealthy)
