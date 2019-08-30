@@ -114,9 +114,8 @@ def animate_rtv(i, x, sensors, colors, start_time):
         ctr += 1
         ax_text.set_text(str(ctr) + '%')
         if ctr >= 100:
+            predict = False
             ax_text.set_text(knn.knn())
-    else:
-        ax_text.set_text('')
 
 
 btnAir.on_clicked(onClickNone)
