@@ -77,10 +77,10 @@ def save_data(data):
         writer = csv.writer(fd)
         writer.writerow(data)
 
-    # if predict:
-    #     with open('_test.csv', 'a') as fd:
-    #         writer = csv.writer(fd)
-    #         writer.writerow(data)
+    if predict:
+        with open('_test.csv', 'a') as fd:
+            writer = csv.writer(fd)
+            writer.writerow(data)
 
     if target != 'air':
         with open('_dataset.csv', 'a') as fd:
