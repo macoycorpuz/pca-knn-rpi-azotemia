@@ -109,13 +109,13 @@ def animate_rtv(i, x, sensors, colors, start_time):
     design_rtv_graph(ax_graph)
     save_data(data)
 
-    # global predict, ctr
-    # if predict:
-    #     ctr += 1
-    #     ax_text.set_text(str(ctr) + '%')
-    #     if ctr >= 100:
-    #         predict = False
-    #         ax_text.set_text(knn.knn())
+    global predict, ctr
+    if predict:
+        ctr += 1
+        ax_text.set_text(str(ctr) + '%')
+        if ctr >= 100:
+            predict = False
+            ax_text.set_text(knn.knn())
 
 
 btnAir.on_clicked(onClickNone)
